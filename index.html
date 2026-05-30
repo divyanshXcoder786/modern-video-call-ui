@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Video Call UI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ───── LEFT SIDEBAR ───── -->
+  <div class="left-side glass">
+    <button class="mode-switch" type="button" aria-label="Mode Switch">
+      <i class="ti ti-contrast"></i>
+    </button>
+    <nav class="navigation">
+      <a href="javascript:void(0)" class="nav-link active" aria-label="Home"><i class="ti ti-home"></i></a>
+      <a href="javascript:void(0)" class="nav-link" aria-label="Chat"><i class="ti ti-message-circle"></i></a>
+      <a href="javascript:void(0)" class="nav-link" aria-label="Call"><i class="ti ti-phone"></i></a>
+      <a href="javascript:void(0)" class="nav-link" aria-label="Users"><i class="ti ti-users"></i></a>
+      <a href="javascript:void(0)" class="nav-link" aria-label="Settings"><i class="ti ti-settings"></i></a>
+    </nav>
+  </div>
+
+  <!-- ───── MAIN ───── -->
+  <div class="app-main">
+
+    <!-- TOP BAR — TIMER FEATURE (timer-section yahan hai) -->
+    <div class="top-bar glass">
+      <h2>Team Standup</h2>
+
+      <!-- CALL TIMER (Timer Feature) -->
+      <div class="timer-section">
+        <span class="timer-dot" id="timerDot"></span>
+        <span class="timer-display" id="timerDisplay">00:00:00</span>
+      </div>
+
+      <div class="live-badge">🔴 LIVE</div>
+    </div>
+
+    <!-- VIDEO GRID -->
+    <div class="video-call-wrapper">
+
+      <div class="video-participant speaking">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/045/782/633/small_2x/confident-businessman-in-modern-office-setting-professional-portrait-corporate-attire-natural-light-photo.jpg" alt="Andy Will">
+        <p><i class="ti ti-microphone"></i> Andy Will</p>
+      </div>
+
+      <div class="video-participant">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.iXZeU_CQPDPmVDCQt7NgCQHaEK?pid=Api&P=0&h=180" alt="Emmy Lou">
+        <p><i class="ti ti-microphone"></i> Emmy Lou</p>
+      </div>
+
+      <div class="video-participant">
+        <img src="https://bildung.match4it.com/wp-content/uploads/2025/03/kimatch4_A_handsome_professional_business_man_in_his_30s_enga_23a06c43-2d1a-43a9-9f53-94329ab082d0_2-1024x683.webp" alt="Tim Russel">
+        <p><i class="ti ti-microphone"></i> Tim Russel</p>
+      </div>
+
+      <div class="video-participant">
+        <img src="https://static.vecteezy.com/system/resources/previews/026/794/814/large_2x/double-exposure-of-a-business-man-using-laptop-on-his-desk-front-view-office-background-realistic-image-ultra-hd-high-design-very-detailed-photo.jpg" alt="Jessica Bell">
+        <p><i class="ti ti-microphone"></i> Jessica Bell</p>
+      </div>
+
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="video-call-actions glass">
+      <button class="video-action-button" id="micBtn" type="button" aria-label="Mute">
+        <i class="ti ti-microphone"></i>
+      </button>
+      <button class="video-action-button" id="camBtn" type="button" aria-label="Camera">
+        <i class="ti ti-video"></i>
+      </button>
+      <button class="video-action-button" id="shareBtn" type="button" aria-label="Share Screen">
+        <i class="ti ti-screen-share"></i>
+      </button>
+      <button class="video-action-button" id="reactBtn" type="button" aria-label="React">
+        <i class="ti ti-mood-smile"></i>
+      </button>
+      <button class="video-action-button endcall" id="leaveBtn" type="button" aria-label="Leave">
+        <i class="ti ti-phone-off"></i> Leave
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ───── RIGHT CHAT PANEL (Chat Feature) ───── -->
+  <div class="right-side glass">
+
+    <!-- CHAT HEADER -->
+    <div class="chat-header">
+      <span><i class="ti ti-messages" aria-hidden="true"></i> Live Chat</span>
+      <span class="chat-count" id="onlineCount">4 online</span>
+    </div>
+
+    <!-- TABS -->
+    <div class="chat-tabs">
+      <button class="tab-btn active" data-tab="chat">
+        <i class="ti ti-message" aria-hidden="true"></i> Chat
+        <span class="unread-badge" id="unreadBadge" style="display:none">0</span>
+      </button>
+      <button class="tab-btn" data-tab="people">
+        <i class="ti ti-users" aria-hidden="true"></i> People
+      </button>
+    </div>
+
+    <!-- CHAT TAB -->
+    <div class="tab-content" id="tab-chat">
+
+      <!-- Typing indicator -->
+      <div class="typing-indicator" id="typingIndicator" style="display:none">
+        <span class="typing-dots">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="typing-name" id="typingName">Andy</span> is typing...
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-area" id="chatArea"></div>
+
+      <!-- Emoji Picker -->
+      <div class="emoji-picker" id="emojiPicker" style="display:none">
+        <button class="emoji-btn" data-emoji="👍">👍</button>
+        <button class="emoji-btn" data-emoji="❤️">❤️</button>
+        <button class="emoji-btn" data-emoji="😂">😂</button>
+        <button class="emoji-btn" data-emoji="🎉">🎉</button>
+        <button class="emoji-btn" data-emoji="🔥">🔥</button>
+        <button class="emoji-btn" data-emoji="👏">👏</button>
+        <button class="emoji-btn" data-emoji="🤔">🤔</button>
+        <button class="emoji-btn" data-emoji="✅">✅</button>
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-area">
+        <button class="emoji-toggle" id="emojiToggle" type="button" aria-label="Emoji picker">
+          <i class="ti ti-mood-smile"></i>
+        </button>
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Type a message..."
+          aria-label="Chat message"
+          autocomplete="off"
+          maxlength="300"
+        />
+        <button type="button" id="sendBtn" aria-label="Send message">
+          <i class="ti ti-send"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PEOPLE TAB -->
+    <div class="tab-content" id="tab-people" style="display:none">
+      <ul class="people-list" id="peopleList"></ul>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
