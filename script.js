@@ -289,7 +289,7 @@ scrollBottom(false);
   });
 })();
 document.getElementById('leaveBtn')?.addEventListener('click', () => {
-  if (confirm('Kya aap call chhorna chahte hain?')) {
+  if (confirm('Do you want to leave the call')) {
     const duration = window.__stopCallTimer ? window.__stopCallTimer() : '00:00:00';
     renderMessage({ senderId:'system', text:`You left the call. Duration: ${duration}`, type:'system' });
   }
